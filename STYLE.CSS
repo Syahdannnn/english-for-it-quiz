@@ -1,0 +1,187 @@
+/* BASE STYLE & FONTS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px 20px;
+}
+
+/* CONTAINER UTAMA */
+.quiz-container {
+    background: rgba(255, 255, 255, 0.95);
+    width: 100%;
+    max-width: 650px;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    padding: 40px;
+    backdrop-filter: blur(10px);
+}
+
+/* HEADER */
+.header {
+    text-align: center;
+    margin-bottom: 35px;
+    border-bottom: 2px solid #eef2f3;
+    padding-bottom: 20px;
+}
+
+.header h1 {
+    color: #4a5568;
+    font-size: 2rem;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.header p {
+    color: #718096;
+    font-size: 0.95rem;
+}
+
+/* CARD SOAL */
+.question-card {
+    margin-bottom: 30px;
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 15px;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+    transition: transform 0.2s;
+}
+
+.question-card:hover {
+    transform: translateY(-2px);
+}
+
+.question-text {
+    font-size: 1.1rem;
+    color: #2d3748;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+/* PILIHAN JAWABAN */
+.options-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.option-label {
+    display: flex;
+    align-items: center;
+    padding: 14px 20px;
+    background: #f7fafc;
+    border: 2px solid #edf2f7;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    color: #4a5568;
+    transition: all 0.2s ease;
+}
+
+.option-label:hover {
+    background: #edf2f7;
+    border-color: #cbd5e0;
+}
+
+.option-label input[type="radio"] {
+    display: none;
+}
+
+.custom-radio {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #a0aec0;
+    border-radius: 50%;
+    margin-right: 15px;
+    display: inline-block;
+    position: relative;
+    flex-shrink: 0;
+}
+
+.option-label input[type="radio"]:checked + .custom-radio {
+    border-color: #4c51bf;
+    background: #4c51bf;
+}
+
+.option-label input[type="radio"]:checked + .custom-radio::after {
+    content: '';
+    width: 8px;
+    height: 8px;
+    background: #fff;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.option-label input[type="radio"]:checked {
+    background: #ebf4ff;
+}
+
+input[type="radio"]:checked ~ span:last-child {
+    font-weight: 600;
+    color: #2b6cb0;
+}
+
+.option-label.selected-box {
+    background: #ebf8ff;
+    border-color: #4299e1;
+}
+
+/* TOMBOL SUBMIT */
+.btn-submit {
+    width: 100%;
+    padding: 16px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(118, 75, 162, 0.3);
+    transition: all 0.3s;
+    margin-top: 10px;
+}
+
+.btn-submit:hover {
+    opacity: 0.9;
+    transform: scale(1.01);
+    box-shadow: 0 8px 20px rgba(118, 75, 162, 0.4);
+}
+
+/* BOX HASIL AKHIR */
+.result-box {
+    margin-top: 30px;
+    padding: 25px;
+    border-radius: 15px;
+    text-align: center;
+    display: none;
+    animation: fadeIn 0.5s ease;
+}
+
+.result-excellent { background: #c6f6d5; color: #22543d; border: 1px solid #9ae6b4; }
+.result-good { background: #feebc8; color: #744210; border: 1px solid #fbd38d; }
+.result-bad { background: #fed7d7; color: #742a2a; border: 1px solid #feb2b2; }
+
+.result-box h2 { font-size: 1.8rem; margin-bottom: 8px; }
+.result-box p { font-size: 1.1rem; }
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}

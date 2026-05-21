@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>English for IT Quiz</title>
+    <link rel="stylesheet" href="style.CSS">
+    <!-- Style tambahan internal untuk transisi halaman, input nama, dan footer -->
+    <style>
+        .page { display: none; }
+        .page.active { display: block; }
+        .input-group { margin-bottom: 20px; text-align: left; }
+        .input-group label { display: block; margin-bottom: 8px; font-weight: bold; }
+        .input-group input { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
+        .button-group { display: flex; gap: 10px; margin-top: 20px; }
+        .btn-nav { flex: 1; padding: 12px; border: none; border-radius: 4px; cursor: pointer; font-weight: bold; background-color: #007acc; color: white; }
+        .btn-nav:disabled { background-color: #ccc; cursor: not-allowed; }
+        
+        /* Style untuk Footer Nama Pembuat */
+        .quiz-footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px dashed #ccc;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #666;
+        }
+        .quiz-footer strong {
+            color: #007acc;
+        }
+    </style>
+</head>
+<body>
+
+<div class="quiz-container">
+    <div class="header">
+        <h1>💻 English for IT Quiz</h1>
+        <p>Evaluasi pemahaman istilah Bahasa Inggris Teknik (TRPL)</p>
+    </div>
+
+    <form id="quizForm">
+        <!-- HALAMAN 1: INPUT NAMA & SOAL 1-5 -->
+        <div id="page1" class="page active">
+            <!-- Fitur Tambah Nama -->
+            <div class="question-card">
+                <div class="input-group">
+                    <label for="namaPraktikan">Masukkan Nama Lengkap Anda:</label>
+                    <input type="text" id="namaPraktikan" placeholder="Contoh: Budi Santoso" required>
+                </div>
+            </div>
+
+            <!-- Soal 1 -->
+            <div class="question-card">
+                <p class="question-text">1. What is the English term for 'mencari kesalahan' in code?</p>
+                <div class="options-container">
+                    <label class="option-label"><input type="radio" name="q0" value="Coding" required onclick="highlight(this)"><span class="custom-radio"></span><span>Coding</span></label>
+                    <label class="option-label"><input type="radio" name="q0" value="Running" onclick="highlight(this)"><span class="custom-radio"></span><span>Running</span></label>
+                    <label class="option-label"><input type="radio" name="q0" value="Debugging" onclick="highlight(this)"><span class="custom-radio"></span><span>Debugging</span></label>
+                    <label class="option-label"><input type="radio" name="q0" value="Writing" onclick="highlight(this)"><span class="custom-radio"></span><span>Writing</span></label>
+                </div>
+            </div>
+
+            <!-- Soal 2 -->
+            <div class="question-card">
+                <p class="question-text">2. 'Variable' is used to ___ data in a program.</p>
+                <div class="options-container">
+                    <label class="option-label"><input type="radio" name="q1" value="Delete" required onclick="highlight(this)"><span class="custom-radio"></span><span>Delete</span></label>
+                    <label class="option-label"><input type="radio" name="q1" value="Store" onclick="highlight(this)"><span class="custom-radio"></span><span>Store</span></label>
+                    <label class="option-label"><input type="radio" name="q1" value="Eat" onclick="highlight(this)"><span class="custom-radio"></span><span>Eat</span></label>
+                    <label class="option-label"><input type="radio" name="q1" value="Close" onclick="highlight(this)"><span class="custom-radio"></span><span>Close</span></label>
+                </div>
+            </div>
+
+            <!-- Soal 3 -->
+            <div class="question-card">
+                <p class="question-text">3. In HTML, the 'href' attribute is used for ___.</p>
+                <div class="options-container">
+                    <label class="option-label"><input type="radio" name="q2" value="Colors" required onclick="highlight(this)"><span class="custom-radio"></span><span>Colors</span></label>
+                    <label class="option-label"><input type="radio" name="q2" value="Links" onclick="highlight(this)"><span class="custom-radio"></span><span>Links</span></label>
+                    <label class="option-label"><input type="radio" name="q2" value="Bold text" onclick="highlight(this)"><span class="custom-radio"></span><span>Bold text</span></label>
+                    <label class="option-label"><input type="radio" name="q2" value="Background" onclick="highlight(this)"><span class="custom-radio"></span><span>Background</span></label>
+                </div>
+            </div>
+
+            <!-- Soal 4 -->
+            <div class="question-card">
+                <p class="question-text">4. What is the opposite of 'True' in Boolean?</p>
+                <div class="options-container">
+                    <label class="option-label"><input type="radio" name="q3" value="False" required onclick="highlight(this)"><span class="custom-radio"></span><span>False</span></label>
+                    <label class="option-label"><input type="radio" name="q3" value="Yes" onclick="highlight(this)"><span class="custom-radio"></span><span>Yes</span></label>
+                    <label class="option-label"><input type="radio" name="q3" value="None" onclick="highlight(this)"><span class="custom-radio"></span><span>None</span></label>
+                    <label class="option-label"><input type="radio" name="q3" value="Correct" onclick="highlight(this)"><span class="custom-radio"></span><span>Correct</span></label>
+                </div>
+            </div>
+
+            <!-- Soal 5 -->
+            <div class="question-card">
+                <p class="question-text">5. To start a program, we usually need to ___ it.</p>
+                <div class="options-container">
+                    <label class="option-label"><input type="radio" name="q4" value="Execute/Run" required onclick="highlight(this)"><span class="custom-radio"></span><span>Execute/Run</span></label>
+                    <label class="option-label"><input type="radio" name="q4" value="Stop" onclick="highlight(this)"><span class="custom-radio"></span><span>Stop</span></label>
+                    <label class="option-label"><input type="radio" name="q4" value="Sleep" onclick="highlight(this)"><span class="custom-radio"></span><span>Sleep</span></label>
+                    <label class="option-label"><input type="radio" name="q4" value="Pause" onclick="highlight(this)"><span class="custom-radio"></span><span>Pause</span></label>
+                </div>
+            </div>
+
+            <div class="button-group">
+                <button type="button" class="btn-nav" onclick="nextPage()">Selanjutnya ➡️</button>
+            </div>
+        </div>
+
+        <!-- HALAMAN 2: SOAL 6-10 -->
+        <div id="page2" class="page">
+            <!-- Soal 6 -->
+            <div class="question-card">
+                <p class="question-text">6. What is the English term for 'menyimpan' code into a remote repository like GitHub?</p>
+                <div class="options-container">
+                    <label class="option-label"><input type="radio" name="q5" value="Pull" required onclick="highlight(this)"><span class="custom-radio"></span><span>Pull</span></label>
+                    <label class="option-label"><input type="radio" name="q5" value="Push" onclick="highlight(this)"><span class="custom-radio"></span><span>Push</span></label>
+                    <label class="option-label"><input type="radio" name="q5" value="Delete" onclick="highlight(this)"><span class="custom-radio"></span><span>Delete</span></label>
+                    <label class="option-label"><input type="radio" name="q5" value="Merge" onclick="highlight(this)"><span class="custom-radio"></span><span>Merge</span></label>
+                </div>
+            </div>
+
+            <!-- Soal 7 -->
+            <div class="question-card">
+                <p class="question-text">7. A ___ is a flaw or mistake in a computer program that causes it to behave incorrectly.</p>
+                <div class="options-container">
+                    <label class="option-label"><input type="radio" name="q6" value="Feature" required onclick="highlight(this)"><span class="custom-radio"></span><span>Feature</span></label>
+                    <label class="option-label"><input type="radio" name="q6" value="Bug" onclick="highlight(this)"><span class="custom-radio"></span><span>Bug</span></label>
+                    <label class="option-label"><input type="radio" name="q6" value="Virus" onclick="highlight(this)"><span class="custom-radio"></span><span>Virus</span></label>
+                    <label class="option-label"><input type="radio" name="q6" value="Update" onclick="highlight(this)"><span class="custom-radio"></span><span>Update</span></label>
+                </div>
+            </div>
+
+            <!-- Soal 8 -->
+            <div class="question-card">
+                <p class="question-text">8. What does 'API' stand for in software engineering?</p>
+                <div class="options-container">
+                    <label class="option-label"><input type="radio" name="q7" value="Application Programming Interface" required onclick="highlight(this)"><span class="custom-radio"></span><span>Application Programming Interface</span></label>
+                    <label class="option-label"><input type="radio" name="q7" value="Apple Product Integration" onclick="highlight(this)"><span class="custom-radio"></span><span>Apple Product Integration</span></label>
+                    <label class="option-label"><input type="radio" name="q7" value="Automated Program Internet" onclick="highlight(this)"><span class="custom-radio"></span><span>Automated Program Internet</span></label>
+                    <label class="option-label"><input type="radio" name="q7" value="Array Processing Information" onclick="highlight(this)"><span class="custom-radio"></span><span>Array Processing Information</span></label>
+                </div>
+            </div>
+
+            <!-- Soal 9 -->
+            <div class="question-card">
+                <p class="question-text">9. What is the English term for 'menggabungkan' branches in Git?</p>
+                <div class="options-container">
+                    <label class="option-label"><input type="radio" name="q8" value="Split" required onclick="highlight(this)"><span class="custom-radio"></span><span>Split</span></label>
+                    <label class="option-label"><input type="radio" name="q8" value="Clone" onclick="highlight(this)"><span class="custom-radio"></span><span>Clone</span></label>
+                    <label class="option-label"><input type="radio" name="q8" value="Merge" onclick="highlight(this)"><span class="custom-radio"></span><span>Merge</span></label>
+                    <label class="option-label"><input type="radio" name="q8" value="Fetch" onclick="highlight(this)"><span class="custom-radio"></span><span>Fetch</span></label>
+                </div>
+            </div>
+
+            <!-- Soal 10 -->
+            <div class="question-card">
+                <p class="question-text">10. 'Deployment' means the process of making an application ___ to users.</p>
+                <div class="options-container">
+                    <label class="option-label"><input type="radio" name="q9" value="Hidden" required onclick="highlight(this)"><span class="custom-radio"></span><span>Hidden</span></label>
+                    <label class="option-label"><input type="radio" name="q9" value="Available/Live" onclick="highlight(this)"><span class="custom-radio"></span><span>Available/Live</span></label>
+                    <label class="option-label"><input type="radio" name="q9" value="Broken" onclick="highlight(this)"><span class="custom-radio"></span><span>Broken</span></label>
+                    <label class="option-label"><input type="radio" name="q9" value="Deleted" onclick="highlight(this)"><span class="custom-radio"></span><span>Deleted</span></label>
+                </div>
+            </div>
+
+            <div class="button-group">
+                <button type="button" class="btn-nav" onclick="prevPage()">⬅️ Kembali</button>
+                <button type="button" class="btn-submit" onclick="hitungNilai()">Submit & Lihat Nilai 🚀</button>
+            </div>
+        </div>
+    </form>
+
+    <div id="resultBox" class="result-box" style="display: none;">
+        <h2 id="resultUser">Nama: -</h2>
+        <h2 id="resultTitle">Skor Anda: 0</h2>
+        <p id="resultDesc">Status</p>
+    </div>
+
+    <!-- FOOTER: IDENTITAS PEMBUAT WEBSITE -->
+    <div class="quiz-footer">
+        <p>⚙️ English for IT Quiz v1.0 | Created by <strong>Syahdan</strong></p>
+    </div>
+</div>
+
+<script>
+    // Fungsi Highlight Radio Button
+    function highlight(element) {
+        const name = element.name;
+        const labels = document.getElementsByName(name);
+        labels.forEach(input => {
+            input.parentElement.classList.remove('selected-box');
+        });
+        if(element.checked) {
+            element.parentElement.classList.add('selected-box');
+        }
+    }
+
+    // Fungsi Navigasi Halaman
+    function nextPage() {
+        const nama = document.getElementById("namaPraktikan").value.trim();
+        if (nama === "") {
+            alert("Harap masukkan nama Anda terlebih dahulu!");
+            return;
+        }
+        
+        // Cek apakah soal 1-5 di halaman 1 sudah dijawab semua
+        for (let i = 0; i < 5; i++) {
+            const opsi = document.getElementsByName(`q${i}`);
+            let diisi = false;
+            for (let j = 0; j < opsi.length; j++) {
+                if (opsi[j].checked) { diisi = true; break; }
+            }
+            if (!diisi) {
+                alert(`Harap jawab soal nomor ${i+1} terlebih dahulu!`);
+                return;
+            }
+        }
+
+        document.getElementById("page1").classList.remove("active");
+        document.getElementById("page2").classList.add("active");
+        window.scrollTo(0, 0);
+    }
+
+    function prevPage() {
+        document.getElementById("page2").classList.remove("active");
+        document.getElementById("page1").classList.add("active");
+        window.scrollTo(0, 0);
+    }
+
+    // Fungsi Hitung Nilai Akhir
+    function hitungNilai() {
+        const nama = document.getElementById("namaPraktikan").value.trim();
+        // Kunci jawaban soal 1-10 Berurutan
+        const jawabanBenar = [
+            "Debugging", "Store", "Links", "False", "Execute/Run",
+            "Push", "Bug", "Application Programming Interface", "Merge", "Available/Live"
+        ];
+        
+        let skor = 0;
+        let totalSoal = 10;
+        let formValid = true;
+
+        // Validasi dan Hitung Soal 6-10 di Halaman 2
+        for (let i = 0; i < totalSoal; i++) {
+            const opsi = document.getElementsByName(`q${i}`);
+            let diisi = false;
+            let nilaiDipilih = "";
+
+            for (let j = 0; j < opsi.length; j++) {
+                if (opsi[j].checked) {
+                    diisi = true;
+                    nilaiDipilih = opsi[j].value;
+                }
+            }
+
+            if (!diisi) {
+                formValid = false;
+                alert(`Harap jawab soal nomor ${i+1} terlebih dahulu!`);
+                break;
+            }
+
+            if (nilaiDipilih === jawabanBenar[i]) {
+                skor++;
+            }
+        }
+
+        if (!formValid) return;
+
+        const nilaiAkhir = (skor / totalSoal) * 100;
+        const resultBox = document.getElementById("resultBox");
+        const resultUser = document.getElementById("resultUser");
+        const resultTitle = document.getElementById("resultTitle");
+        const resultDesc = document.getElementById("resultDesc");
+
+        // Tampilkan Hasil
+        resultBox.style.display = "block";
+        resultUser.innerText = `Nama Praktikan: ${nama}`;
+        resultTitle.innerText = `Skor Akhir: ${nilaiAkhir}`;
+        resultBox.className = "result-box";
+
+        if (nilaiAkhir >= 80) {
+            resultBox.classList.add("result-excellent");
+            resultDesc.innerText = "Excellent! Kamu sangat paham istilah IT. 🏆";
+        } else if (nilaiAkhir >= 60) {
+            resultBox.classList.add("result-good");
+            resultDesc.innerText = "Good Job! Cukup bagus, tingkatkan lagi. 👍";
+        } else {
+            resultBox.classList.add("result-bad");
+            resultDesc.innerText = "Need Practice! Jangan menyerah, pelajari lagi istilahnya. 💪";
+        }
+
+        resultBox.scrollIntoView({ behavior: 'smooth' });
+    }
+</script>
+
+</body>
+</html>
